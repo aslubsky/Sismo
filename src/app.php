@@ -97,7 +97,7 @@ $app['builder'] = $app->share(function () use ($app) {
         throw new \RuntimeException(sprintf('The git binary cannot be found (%s).', $app['git.path']));
     }
 
-    return new Builder($app['build.path'], $app['git.path'], $app['git.cmds']);
+    return new SvnBuilder($app['build.path'], $app['git.path'], $app['git.cmds']);
 });
 
 $app['sismo'] = $app->share(function () use ($app) {
