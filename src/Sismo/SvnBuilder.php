@@ -80,16 +80,16 @@ class SvnBuilder
         $process = $this->execute($this->getSvnCommand('info'), sprintf('Unable to get logs for project "%s".', $this->project));
 
         $outParts = explode("\n", trim($process->getOutput()));
-        $outParts[5] = trim(end(explode(':', $outParts[5])));
-        $outParts[8] = trim(end(explode(':', $outParts[8])));
-        $outParts[10] = trim(end(explode(': ', $outParts[10])));
-        $outParts[10] = trim(current(explode('(', $outParts[10])));
+        $outParts[4] = trim(end(explode(':', $outParts[4])));
+        $outParts[7] = trim(end(explode(':', $outParts[7])));
+        $outParts[9] = trim(end(explode(': ', $outParts[9])));
+        $outParts[9] = trim(current(explode('(', $outParts[9])));
 
         return array(
-            $outParts[5],
-            $outParts[8],
-            $outParts[10],
-            $outParts[5]
+            $outParts[4],
+            $outParts[7],
+            $outParts[9],
+            $outParts[7]
         );
     }
 
