@@ -36,7 +36,7 @@ class Sismo
      * @param StorageInterface $storage A StorageInterface instance
      * @param Builder          $builder A Builder instance
      */
-    public function __construct(StorageInterface $storage, Builder $builder)
+    public function __construct(StorageInterface $storage, SvnBuilder $builder)
     {
         $this->storage = $storage;
         $this->builder = $builder;
