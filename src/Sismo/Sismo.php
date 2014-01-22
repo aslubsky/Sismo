@@ -72,12 +72,14 @@ class Sismo
 
         $process = $this->builder->build();
 
-        if (!$process->isSuccessful()) {
+        $out = $process->getOutput();
+        if(strpos($out, 'FAILURES!') !== false) {
+            //if (!$process->isSuccessful()) {
             $commit->setStatusCode('failed');
-            $commit->setOutput(sprintf("\033[31mBuild failed\033[0m\n\n\033[33mOutput\033[0m\n%s\n\n\033[33m Error\033[0m%s", $process->getOutput(), $process->getErrorOutput()));
+            $commit->setOutput(sprintf("\033[31mBuild failed\033[0m\n\n\033[33mOutput\033[0m\n%s\n\n\033[33m Error\033[0m%s", $out, $process->getErrorOutput()));
         } else {
             $commit->setStatusCode('success');
-            $commit->setOutput($process->getOutput());
+            $commit->setOutput($out);
         }
 
         $this->storage->updateCommit($commit);

@@ -16,6 +16,7 @@ use Sismo\Sismo;
 use Sismo\Project;
 use Sismo\Storage\Storage;
 use Sismo\Builder;
+use Sismo\SvnBuilder;
 use Symfony\Component\Process\Process;
 use Symfony\Component\HttpFoundation\Response;
 use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
@@ -45,7 +46,7 @@ $app['db.path']     = $app->share(function ($app) {
 });
 $app['build.token']     = getenv('SISMO_BUILD_TOKEN');
 $app['twig.cache.path'] = $app->share(function ($app) { return $app['data.path'].'/cache'; });
-$app['git.path']        = getenv('SISMO_GIT_PATH') ?: 'git';
+$app['git.path']        = getenv('SISMO_GIT_PATH') ?: 'svn';
 $app['git.cmds']        = array();
 $app['db.schema']       = <<<EOF
 CREATE TABLE IF NOT EXISTS project (
