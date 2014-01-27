@@ -40,7 +40,9 @@
     <div class="commit">{{ _self.commit_link(commit) }}</div>
     <h2>
         {{ commit.message }}
-        <span class="permalink"><a href="{{ path('commit', { 'slug': commit.project.slug, 'sha': commit.sha }) }}">¶</a></span>
+        <span class="permalink">
+            <a href="{{ path('commit', { 'slug': commit.project.slug, 'sha': commit.sha }) }}">¶</a> / <a href="/coverage/index.html">coverage</a>
+        </span>
     </h2>
     <div class="meta">
         by <em>{{ commit.author }}</em> on <em>{{ commit.date|date('j M Y H:i') }}</em>
